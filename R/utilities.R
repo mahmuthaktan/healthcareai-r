@@ -38,7 +38,9 @@ get_factor_levels <- function(d) {
   not_factors <- dplyr::union(names(d)[purrr::map_lgl(d, ~ is.numeric(.x))],
                               find_date_cols(d))
   d <- d[, !names(d) %in% not_factors, drop = FALSE]
-  lapply(d, function(x) as.character(unique(x)))
+  lapply(d, function(x) {
+    if (is.factor(x)) levels(x) else unique(x)
+  })
 }
 
 #' Take list of character vectors as from find_new_levels and format for

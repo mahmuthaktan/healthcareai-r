@@ -129,3 +129,14 @@ test_that("alpha gets attached to interpret objects even if glm isn't best", {
   expect_warning( i3 <- interpret(m) )
   expect_equal(attr(i3, "alpha"), attr(interpret(g), "alpha"))
 })
+
+test_that("print.interpret is regestered generic and works", {
+  expect_true("print.interpret" %in% methods("plot"))
+  io <- capture_output(print(interpret(g)))
+  expect_true(stringr::str_detect(io, "tibble"))
+  expect_true(stringr::str_detect(io, "coefficient"))
+})
+
+test_that("print.interpret messages out reference factor levels", {
+
+})

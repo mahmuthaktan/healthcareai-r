@@ -157,3 +157,13 @@ plot.interpret <- function(x, include_intercept = FALSE, max_char = 40,
     print(the_plot)
   return(invisible(the_plot))
 }
+
+#' print method for interpret
+#' @param x interpret df
+#' @export
+#' @noRd
+print.interpret <- function(x, ...) {
+  # message about factor reference levels
+  NextMethod(x)
+  return(invisible(x))
+}

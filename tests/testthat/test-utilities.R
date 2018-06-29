@@ -83,3 +83,10 @@ test_that("trunc_vars", {
   expect_warning(short <- trunc_char(test_vec, 5), "5")
   expect_equal(short, c("seven", "eleve", "fifte"))
 })
+
+test_that("get_factor_levels", {
+  fl <-
+    dplyr::mutate(pima_diabetes, weight_class = fct_relevel(weight_class, "underweight")) %>%
+    get_factor_levels()
+    expect_equal(fl$weight_class[1], "underweight")
+})
