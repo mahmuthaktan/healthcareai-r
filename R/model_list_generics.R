@@ -45,7 +45,7 @@ print.model_list <- function(x, ...) {
 
 #' summary method for model_list
 #'
-#' @param x model_list
+#' @param object model_list
 #' @return list of tuning performance data frames, invisibly
 #'
 #' @export
@@ -100,7 +100,7 @@ summary.model_list <- function(object, ...) {
 #' @importFrom purrr map_df
 #' @export
 #' @examples
-#' models <- tune_models(mtcars, mpg, models = "xgb", tune_depth = 5)
+#' models <- tune_models(mtcars, mpg, models = "glm")
 #' plot(models)
 plot.model_list <- function(x, font_size = 11, point_size = 1,
                             print = TRUE, ...) {

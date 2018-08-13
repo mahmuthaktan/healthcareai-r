@@ -147,6 +147,10 @@ predict_model_list_main <- function(object,
     } else {
       ready_no_prep(training_data, newdata)
     }
+  # Align column order
+  ord <- match(names(training_data), names(to_pred))
+  # The ord part gets columns that are in training_data; the which part retains any other columns
+  to_pred <- to_pred[, c(ord[!is.na(ord)], which(!names(to_pred) %in% names(training_data)))]
 
   # If predicting on training, use out-of-fold; else make predictions
   if (using_training_data) {
@@ -192,7 +196,15 @@ get_oof_predictions <- function(x, mi = extract_model_info(x)) {
   preds <- dplyr::arrange(x[[mod]]$pred, rowIndex)
   # To solve a mysterious bug in test-predict: predict handles positive class specified in training
   # Where each observation appeared twice in object$`Random Forest`$pred:
-  preds <- preds[!duplicated(preds), ]
+  ## Now even hackier because this error popped up on Debian CRAN checks in
+  ## tune_models tests for picking positive class even with the hacky fix of
+  ## removing any fully duplicated lines from preds
+  ### Cannot reproduce locally, so not sure what is wrong, but two changes:
+  ### convert to tibble to avoid potential partial name matching and other such gotchas and
+  ### Take the first value of each rowIndex if any appears twice (which they should not!)
+  preds <-
+    tibble::as_tibble(preds) %>%
+    .[!duplicated(.$rowIndex), ]
   if (mi$m_class == "Regression")
     return(preds$pred)
   if (mi$m_class == "Classification")

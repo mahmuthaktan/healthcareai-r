@@ -90,3 +90,18 @@ test_that("get_factor_levels", {
     get_factor_levels()
     expect_equal(fl$weight_class[1], "underweight")
 })
+
+test_that("mode - test factor", {
+  test_vec <- as.factor(c("a", "b", "c", "d", "b"))
+  expect_equal(factor(c("b"), levels = c("a", "b", "c", "d")), Mode(test_vec))
+})
+
+test_that("mode - test character", {
+  test_vec <- c("a", "b", "c", "d", "b")
+  expect_equal("b", Mode(test_vec))
+})
+
+test_that("mode - test numeric", {
+  test_vec <- c(3, 2, 1, 2, 3, 3)
+  expect_equal(3, Mode(test_vec))
+})
