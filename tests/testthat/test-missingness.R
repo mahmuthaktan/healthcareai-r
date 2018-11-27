@@ -8,7 +8,7 @@ dat_strnotfactors <- data.frame(a = c(1, 2, "NA", NA, "none", "??", "?", 5),
                                 b = c("blank", 0, "na", "None", "none", 3, 10, 4),
                                 c = c(10, 5, 8, 1, NA, "NULL", NaN, "Nas"),
                                 d = c(1, 6, 7, 8, 9, 5, 10, 1078950492),
-                                stringsAsFactors = FALSE)
+                                strings_as_factors = FALSE)
 dat_tibble <- tibble(a = c(1, 2, "NA", NA, "none", "??", "?", 5),
                      b = c("blank", 0, "na", "None", "none", 3, 10, 4),
                      c = c(10, 5, 8, 1, NA, "NULL", NaN, "Nas"),
@@ -149,7 +149,7 @@ test_that("make_na - tibble - normal", {
   expect_equal(actual, expected)
 })
 
-test_that("make_na - df stringsAsFactors - normal", {
+test_that("make_na - df strings_as_factors - normal", {
   expected <- data.frame(a = c(1, 2, "NA", NA, "none", "??", "?", 5),
                          b = c(NA, 0, "na", "None", "none", 3, 10, 4),
                          c = c(10, 5, 8, 1, NA, "NULL", NaN, "Nas"),
@@ -163,7 +163,7 @@ test_that("make_na - df strings NOT Factors - normal", {
                          b = c(NA, 0, "na", "None", "none", 3, 10, 4),
                          c = c(10, 5, 8, 1, NA, "NULL", NaN, "Nas"),
                          d = c(1, 6, 7, 8, 9, 5, 10, 1078950492),
-                         stringsAsFactors = FALSE)
+                         strings_as_factors = FALSE)
   actual <- make_na(dat_strnotfactors, "blank")
   expect_equal(actual, expected)
 })
@@ -181,7 +181,7 @@ test_that("make_na - tibble - character col to numeric", {
   expect_equal(actual, expected)
 })
 
-test_that("make_na - df stringsAsFactors - character col to numeric", {
+test_that("make_na - df strings_as_factors - character col to numeric", {
   dat <-
     dat %>%
     mutate(e = c(1, 2, 3, 4, 5, 6, 7, "none"))
@@ -205,7 +205,7 @@ test_that("make_na - df strings NOT Factors - character col to numeric", {
                          c = c(10, 5, 8, 1, NA, "NULL", NaN, "Nas"),
                          d = c(1, 6, 7, 8, 9, 5, 10, 1078950492),
                          e = c(1, 2, 3, 4, 5, 6, 7, NA),
-                         stringsAsFactors = FALSE)
+                         strings_as_factors = FALSE)
   actual <- make_na(dat_strnotfactors, "none")
   expect_equal(actual, expected)
 })
@@ -219,7 +219,7 @@ test_that("make_na - tibble - replace NULL", {
   expect_equal(actual, expected)
 })
 
-test_that("make_na - df stringsAsFactors - replace NULL", {
+test_that("make_na - df strings_as_factors - replace NULL", {
   expected <- data.frame(a = c(1, 2, "NA", NA, "none", "??", "?", 5),
                          b = c("blank", 0, "na", "None", "none", 3, 10, 4),
                          c = c(10, 5, 8, 1, NA, NA, NaN, "Nas"),
@@ -233,7 +233,7 @@ test_that("make_na - df strings NOT Factors - replace NULL", {
                          b = c("blank", 0, "na", "None", "none", 3, 10, 4),
                          c = c(10, 5, 8, 1, NA, NA, NaN, "Nas"),
                          d = c(1, 6, 7, 8, 9, 5, 10, 1078950492),
-                         stringsAsFactors = FALSE)
+                         strings_as_factors = FALSE)
   actual <- make_na(dat_strnotfactors, "NULL")
   expect_equal(actual, expected)
 })
@@ -249,7 +249,7 @@ test_that("make_na - tibble - replace many", {
   expect_equal(actual, expected)
 })
 
-test_that("make_na - df stringsAsFactors - replace many", {
+test_that("make_na - df strings_as_factors - replace many", {
   expected <- data.frame(a = c(1, 2, NA, NA, NA, NA, NA, 5),
                          b = c(NA, 0, NA, NA, NA, 3, 10, 4),
                          c = c(10, 5, 8, 1, NA, NA, NA, NA),
@@ -265,7 +265,7 @@ test_that("make_na - df strings NOT Factors - replace many", {
                          b = c(NA, 0, NA, NA, NA, 3, 10, 4),
                          c = c(10, 5, 8, 1, NA, NA, NA, NA),
                          d = c(1, 6, 7, 8, 9, 5, 10, 1078950492),
-                         stringsAsFactors = FALSE)
+                         strings_as_factors = FALSE)
   missing_values <-
     c("NULL", "none", NaN, "Nas", "na", "??", "?", "NA", "blank", "None")
   actual <- make_na(dat_strnotfactors, missing_values)
@@ -278,7 +278,7 @@ test_that("make_na - df strings NOT Factors - replace many", {
                          b = c(NA, 0, NA, NA, NA, 3, 10, 4),
                          c = c(10, 5, 8, 1, NA, NA, NA, NA),
                          d = c(1, 6, 7, 8, 9, 5, 10, 1078950492),
-                         stringsAsFactors = FALSE)
+                         strings_as_factors = FALSE)
   missing_values <-
     c("NULL", "none", NaN, "Nas", "na", "??", "?", "NA", "blank", "None")
   actual <- make_na(dat_strnotfactors, missing_values)

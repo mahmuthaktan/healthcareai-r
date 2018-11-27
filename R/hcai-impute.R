@@ -139,7 +139,7 @@ hcai_impute <- function(recipe,
       recipe <- step_knnimpute(
         recipe,
         all_numeric(), - all_outcomes(),
-        K = num_p$knn_K,
+        neighbors = num_p$knn_K,
         impute_with = num_p$impute_with)
     } else if (numeric_method == "locfimpute") {
       recipe <- step_locfimpute(
@@ -181,7 +181,7 @@ hcai_impute <- function(recipe,
       recipe <- step_knnimpute(
         recipe,
         all_nominal(), - all_outcomes(),
-        K = nom_p$knn_K,
+        neighbors = nom_p$knn_K,
         impute_with = nom_p$impute_with)
     } else if (nominal_method == "locfimpute") {
       recipe <- step_locfimpute(

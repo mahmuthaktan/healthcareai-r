@@ -8,7 +8,7 @@ d <- data.frame(
   d_DTS = c("03-25-2018", "03-26-2018"),
   e_DTS = c("Mar 25 2018", "Mar 26 2018"),
   f_DTS = c("March 25th, 2018", "March 26th, 2018"),
-  stringsAsFactors = FALSE
+  strings_as_factors = FALSE
 )
 
 dt <- data.frame(
@@ -18,7 +18,7 @@ dt <- data.frame(
   dd_DTS = c("03-25-2018 22:30:00",  "03-26-2018 22:30:00"),
   ee_DTS = c("Mar 25 2018 22:30:00",  "Mar 26 2018 22:30:00"),
   ff_DTS = c("March 25th, 2018 22:30:00", "March 26th, 2018 22:30:00"),
-  stringsAsFactors = FALSE
+  strings_as_factors = FALSE
 )
 
 d_mixed <- data.frame(
@@ -28,7 +28,7 @@ d_mixed <- data.frame(
   d_chars = c("a", "b", "d"),
   e_date = lubridate::mdy(c("3-05-2018", "3-26-2018", "06-05-2019")),
   f_DTS = c("2000-1-1 13:30:05", "2000-1-10 1:50:10", "2001-5-10 12:50:10"),
-  stringsAsFactors = FALSE
+  strings_as_factors = FALSE
 )
 
 # Tests ------------------------------------------------------------------------

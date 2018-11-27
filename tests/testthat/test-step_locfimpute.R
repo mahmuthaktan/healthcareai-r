@@ -8,7 +8,7 @@ d <- data.frame(
   char_2 = c(NA, "a", "b", "c"),
   fac_1 = factor(c("a", NA, "b", NA)),
   fac_2 = factor(c(NA, "a", "b", "c")),
-  stringsAsFactors = FALSE
+  strings_as_factors = FALSE
 )
 rec <- recipes::recipe(formula = "~.", d) #nolint
 

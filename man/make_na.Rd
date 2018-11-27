@@ -35,7 +35,7 @@ make_na(dat, "missing")
 dat <- data.frame(gender = c("male", "??", "female", "male", "NULL"),
               age = c(64, 52, 75, "NULL", 70),
               weight = c(139, 0, 193, "??", 273),
-              stringsAsFactors = FALSE)
+              strings_as_factors = FALSE)
 
 make_na(dat, c("??", "NULL"))
 

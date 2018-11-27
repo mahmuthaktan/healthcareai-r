@@ -172,7 +172,7 @@ test_that("add_best_levels adds multiple attributes to df if called multiple tim
 
 test_that("get_best_levels works if all groups have same predictive potential", {
   same_outcome <- d$patient_id[d$class_outcome == "Y"][1:2]
-  g <- expand.grid(patient_id = same_outcome, groups = c("A", "B"), stringsAsFactors = FALSE)
+  g <- expand.grid(patient_id = same_outcome, groups = c("A", "B"), strings_as_factors = FALSE)
   expect_setequal(c("A", "B"), get_best_levels(d, g, patient_id, groups, class_outcome))
 })
 

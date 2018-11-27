@@ -187,7 +187,7 @@ prep.step_dummy_hcai <- function(x, training, info = NULL, ...) {
     levels[[i]] <- attr(terms, "terms")
 
     ## About factor levels here: once dummy variables are made,
-    ## the `stringsAsFactors` info saved in the recipe (under
+    ## the `strings_as_factors` info saved in the recipe (under
     ## recipe$levels will remove the original record of the
     ## factor levels at the end of `prep.recipe` since it is
     ## not a factor anymore. We'll save them here and reset them

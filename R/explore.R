@@ -167,7 +167,7 @@ create_varying_df <- function(models, vary, variables, numerics, characters, tra
                                      numeric = is.numeric(vary[[.x]]),
                                      nlev = length(vary[[.x]])))
 
-  expand.grid(vary, stringsAsFactors = FALSE) %>%
+  expand.grid(vary, strings_as_factors = FALSE) %>%
     as_tibble() %>%
     structure(vi = vi) %>%
     return()

@@ -18,7 +18,7 @@ d <- data.frame(song_id = 1:n,
          lubridate::ymd("2006-03-04") + lubridate::days(1:10)),
        missing82 = sample(1:10, n, replace = TRUE),
        missing64 = sample(100:300, n, replace = TRUE),
-       stringsAsFactors = FALSE)
+       strings_as_factors = FALSE)
 
 d$missing82[sample(1:n, 82, replace = FALSE)] <- NA
 d$missing64[sample(1:n, 64, replace = FALSE)] <- NA
