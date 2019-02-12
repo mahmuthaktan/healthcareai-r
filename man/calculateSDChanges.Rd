@@ -4,7 +4,8 @@
 \alias{calculateSDChanges}
 \title{Calculate std deviation up/down for each numeric field in row}
 \usage{
-calculateSDChanges(dfOriginal, rowNum, numColLeaveOut, sizeOfSDPerturb = 0.5)
+calculateSDChanges(dfOriginal, rowNum, numColLeaveOut,
+  sizeOfSDPerturb = 0.5)
 }
 \arguments{
 \item{dfOriginal}{Data frame from Error in as.double(y) : 

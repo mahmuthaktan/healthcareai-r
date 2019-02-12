@@ -9,16 +9,16 @@
 #' Defaults to SS.
 #' @return Curves (if classification); otherwise nothing. Prints results.
 #'
-#' @import ROCR
-#' @import pROC
+#' @importFrom MLmetrics PRAUC
+#' @importFrom MLmetrics AUC
 #' @export
 #' @references \url{http://healthcareai-r.readthedocs.io}
 #' @seealso \code{\link{healthcareai}}
 calculatePerformance <- function(predictions, ytest, type) {
   
   # These are returned for plotting
-  ROCPlot <- NULL
-  PRCurvePlot <- NULL
+  ROCPlot <- NA
+  PRCurvePlot <- NA
   
   # These are returned for unit tests
   AUROC <- NULL
@@ -27,22 +27,11 @@ calculatePerformance <- function(predictions, ytest, type) {
   MAE <- NULL
   
   if (type == 'classification') {
-    
-    # Performance curves for return and plotting
-    myOutput <- generateAUC(predictions, ytest, 'SS')
-    AUROC = myOutput[[1]]
-    ROCPlot = myOutput[[3]]
-    ROCConf <- pROC::roc(ytest~predictions) # need pROC for 95% confidence
-    conf <- pROC::auc(ROCConf) 
-    cat(sprintf('95%% CI AU_ROC: (%0.2f , %0.2f) \n', ci(conf)[1], ci(conf)[3]))
-    cat(sprintf('\n'))
-    
-    # Performance AUC calcs (AUPR is ROCR-based)
-    myOutput <- generateAUC(predictions, ytest, 'PR')
-    AUPR = myOutput[[1]]
-    PRCurvePlot = myOutput[[3]]
-    ROCConf <- pROC::roc(ytest~predictions) # need pROC for 95% confidence
-    AUROC <- pROC::auc(ROCConf)   
+    if (all(sort(unique(ytest)) == c(1, 2)))
+      ytest <- ytest - 1
+    AUROC = MLmetrics::AUC(y_pred = predictions, y_true = ytest)
+    AUPR = MLmetrics::PRAUC(y_pred = predictions, y_true = ytest)
+    ROCConf <- NA # need pROC for 95% confidence
     cat(sprintf('\n')) 
     
   } else if (type == 'regression') {

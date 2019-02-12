@@ -17,26 +17,6 @@ License: MIT + file LICENSE
 LazyData: TRUE
 Depends:
     R (>= 3.2.3)
-Imports:
-    caret (>= 6.0.78),
-    data.table,
-    DBI,
-    doParallel,
-    dplyr,
-    e1071,
-    ggplot2,
-    grpreg,
-    lme4,
-    methods,
-    odbc,
-    pROC,
-    R6,
-    ranger (>= 0.8.0),
-    ROCR,
-    RSQLite,
-    xgboost
-RoxygenNote: 6.0.1
-Suggests:
-    testthat
+RoxygenNote: 6.1.1
 URL: http://healthcareai-r.readthedocs.io
 BugReports: https://github.com/HealthCatalyst/healthcareai-r/issues

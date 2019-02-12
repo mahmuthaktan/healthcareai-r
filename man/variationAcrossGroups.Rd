@@ -4,8 +4,9 @@
 \alias{variationAcrossGroups}
 \title{Find variation across groups}
 \usage{
-variationAcrossGroups(df, categoricalCols, measureColumn, plotBoxplot = TRUE,
-  plotGroupDifferences = FALSE, returnGroupStats = FALSE, dateCol = NULL,
+variationAcrossGroups(df, categoricalCols, measureColumn,
+  plotBoxplot = TRUE, plotGroupDifferences = FALSE,
+  returnGroupStats = FALSE, dateCol = NULL,
   levelOfDateGroup = "monthly", sigLevel = 0.05)
 }
 \arguments{
