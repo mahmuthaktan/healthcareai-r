@@ -1,14 +1,9 @@
 language: r
 
-env:
-  - LINTR_COMMENT_BOT=false
-
 matrix:
   include:
   os:
-    - linux
     - osx
-    - windows
   r:
     - oldrel
     - release
