@@ -7,8 +7,6 @@ notifications:
   email:
     recipients:
       - michael.mastanduno@healthcatalyst.com
-      - levi.thatcher@healthcatalyst.com
-      - michael.levy@healthcatalyst.com
     on_success: never
     on_failure: always
   slack:
@@ -16,13 +14,21 @@ notifications:
 
 env:
   - LINTR_COMMENT_BOT=false
+
 r:
   - oldrel
   - release
   - devel
+
 matrix:
-  allow_failures:
-  - r: devel
+  include:
+  os:
+    - linux
+    - osx
+    - windows
+  r:
+    - release
+    - devel
 
 r_packages:
   - covr
