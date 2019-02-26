@@ -3,7 +3,7 @@ language: r
 matrix:
   include:
     os:
-      - osx
+      - windows
     r:
       - oldrel
       - release
