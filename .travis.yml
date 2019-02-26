@@ -15,11 +15,6 @@ notifications:
 env:
   - LINTR_COMMENT_BOT=false
 
-r:
-  - oldrel
-  - release
-  - devel
-
 matrix:
   include:
   os:
@@ -27,6 +22,7 @@ matrix:
     - osx
     - windows
   r:
+    - oldrel
     - release
     - devel
 
