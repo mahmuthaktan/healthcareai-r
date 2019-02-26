@@ -2,12 +2,12 @@ language: r
 
 matrix:
   include:
-  os:
-    - osx
-  r:
-    - oldrel
-    - release
-    - devel
+    os:
+      - osx
+    r:
+      - oldrel
+      - release
+      - devel
 
 r_packages:
   - covr
